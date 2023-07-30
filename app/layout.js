@@ -1,4 +1,4 @@
-import "@styles/global.css";
+import "@styles/global.scss";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
@@ -10,6 +10,9 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang='en'>
+    <head>
+    <script src="https://kit.fontawesome.com/4a055b32b8.js" crossorigin="anonymous"></script>
+    </head>
     <body>
       <Provider>
         <div className='main'>

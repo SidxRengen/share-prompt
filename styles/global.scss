@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@100;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;300;400;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Vampiro+One&display=swap");
+
+/* 
+  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
+*/
+.app {
+  text-align: center;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  gap: 5px;
+}
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 120px 24px 160px 24px;
+  pointer-events: none;
+}
+
+.main:before {
+  position: absolute;
+  content: "";
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.main:after {
+  content: "";
+  background-image: url("/assets/images/grid.svg");
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.5;
+  filter: invert(1);
+}
+
+.gradient {
+  height: fit-content;
+  z-index: 3;
+  width: 100%;
+  max-width: 640px;
+  background-image: radial-gradient(
+      at 27% 37%,
+      hsla(215, 98%, 61%, 1) 0px,
+      transparent 0%
+    ),
+    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  filter: blur(100px) saturate(150%);
+  top: 80px;
+  opacity: 0.15;
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    padding: 0;
+  }
+  .title span {
+    font-size: 1rem;
+    color: #ff0c00;
+  }
+}
+.title span {
+  font-size: 4rem;
+  font-weight: 800;
+  font-family: "Roboto", sans-serif;
+  color: black;
+}
+.grad1 {
+  background: radial-gradient(#ff0c00, #ff00dd, #1324f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.grad2 {
+  background: radial-gradient(#ff0c00, #40f513);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.discription {
+  font-size: 2em;
+}
+.logo-text {
+  font-size: 1.4rem;
+  margin-left: 5px;
+  text-decoration: none;
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+}
+.button {
+  font-family: "Roboto Slab", serif;
+}
+.button button {
+  padding: 8px 18px;
+  border-radius: 3vh;
+  margin-left: 12px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+.button1 {
+  background-color: black;
+  color: white;
+}
+.button1 {
+  font-family: "Roboto Slab", serif;
+  padding: 8px 18px;
+  border-radius: 3vh;
+  margin-left: 12px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: white;
+  text-decoration: none;
+}
+.button1 a:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button1:hover {
+  background-color: white;
+  color: black;
+  font-weight: 400;
+  border: 1px solid black;
+}
+.button2 {
+  background-color: white;
+  color: black;
+  font-weight: 400;
+  border: 1px solid black;
+}
+.button2:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.profile-img {
+  border-radius: 10vh;
+}
+.button3 {
+  padding: 5px 10px;
+  border-radius: 3vh;
+  margin-left: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  background-color: black;
+  font-family: "Roboto Slab", serif;
+  color: white;
+}
+.button4 {
+  padding: 8px 19px;
+  border-radius: 3vh;
+  margin-left: 6px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background-color: black;
+  font-family: "Roboto Slab", serif;
+  color: white;
+}
+.button3:hover,
+.button4:hover {
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .discription {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+  .discription p {
+    text-align: justify;
+  }
+  .title span {
+    text-align: justify;
+    font-size: 2.5rem;
+  }
+  .button button {
+    padding: 4px 10px;
+    border-radius: 3vh;
+    margin-left: 6px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  .logo-img {
+    height: 35px;
+  }
+  .logo-text {
+    font-size: 1.4rem;
+  }
+  .profile-img {
+    height: 30px;
+    width: 30px;
+  }
+  .dropdown {
+    height: 140px;
+    width: 200px;
+    border-radius: 1vh;
+    position: absolute;
+    background-color: rgb(223, 231, 213);
+    top: 63px;
+    border-radius: 1vh;
+    right: 20px;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-family: "Poppins", sans-serif;
+  }
+  .dropdown a {
+    text-decoration: none;
+    color: black;
+  }
+  .button3 {
+    padding: 4px 19px;
+    border-radius: 3vh;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    background-color: black;
+    font-family: "Roboto Slab", serif;
+    color: white;
+  }
+  .button4 {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  .mob-nav {
+    display: flex !important;
+  }
+  .desc-nav {
+    display: none !important;
+  }
+}
+.mob-nav {
+  display: none;
+}
+.desc-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+/* form */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 3.3rem;
+    font-size: 4rem;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+  }
+  p {
+    font-family: "Roboto", sans-serif;
+    font-size: 2em;
+    span {
+      background: radial-gradient(#ff0c00, #ff00dd, #1324f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  .tag {
+    h3 {
+      text-align: left;
+      margin-left: 3vw;
+    }
+    textarea {
+      background: rgb(255, 255, 255);
+      border: 0.2px solid black;
+      border-radius: 1vh;
+      font-family: "Roboto", sans-serif;
+      font-size: 1.3rem;
+    }
+    textarea::placeholder {
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      padding-left: 0.5rem;
+      padding-top: 0.5rem;
+    }
+
+    border-radius: 2vh;
+    width: 90vw;
+    backdrop-filter: saturate(180%) blur(10px);
+  }
+  .buttons {
+    display: flex;
+    margin-top: 2vh;
+    justify-content: flex-end;
+    width: 97%;
+    gap: 1rem;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: grey;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 0.3rem 1rem;
+      border-radius: 2vh;
+      border: 0;
+      background-color: aqua;
+    }
+    button:hover {
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+    }
+  }
+}
+.feed {
+  display: flex;
+  width: 100vw;
+  flex-wrap: wrap;
+  gap: 2vw;
+  justify-content: center;
+  min-height: max-content;
+  .prompt {
+    text-align: left;
+    background: rgba(231, 225, 229, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(189, 171, 171, 0.3);
+    padding: .7%;
+    h1 {
+      margin: 1px;
+      font-family: "Roboto", sans-serif;
+    }
+    p {
+      margin: 1px;
+      font-weight: 300;
+      font-family: "Poppins", sans-serif;
+    }
+    .row {
+      width: 100%;
+      align-items: center;
+      display: flex;
+      gap: 10px;
+
+      img {
+        width: 40px;
+        border-radius: 5vh;
+      }
+      h2{
+        width: 80%;
+        font-size: .8rem;
+      font-family: "Roboto", sans-serif;
+      }
+    }
+    .options{
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      padding: 5px 0;
+    }
+  }
+}
