@@ -343,13 +343,14 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(189, 171, 171, 0.3);
-    padding: .7%;
+    padding: 0.7%;
     h1 {
       margin: 1px;
       font-family: "Roboto", sans-serif;
     }
     p {
       margin: 1px;
+      width: 320px;
       font-weight: 300;
       font-family: "Poppins", sans-serif;
     }
@@ -363,17 +364,34 @@
         width: 40px;
         border-radius: 5vh;
       }
-      h2{
+      h2 {
         width: 80%;
-        font-size: .8rem;
-      font-family: "Roboto", sans-serif;
+        font-size: 0.8rem;
+        font-family: "Roboto", sans-serif;
+      }
+      .fa-copy:hover {
+        cursor: pointer;
+        color: grey;
       }
     }
-    .options{
+    .options {
       display: flex;
       justify-content: flex-end;
       gap: 20px;
       padding: 5px 0;
+      i {
+        color: #000000;
+      }
+      i:hover {
+        cursor: pointer;
+      }
+      .fa-trash:hover {
+        color: #ff0c00;
+      }
+      .fa-pen-to-square:hover {
+        color: #1324f5;
+      }
     }
   }
 }
+// edit

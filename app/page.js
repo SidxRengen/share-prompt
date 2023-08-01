@@ -7,7 +7,24 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [feed, setFeed] = useState([]);
-  const {data : session} = useSession();
+  const { data: session } = useSession();
+  const handleDelete = async (ID) => {
+    const res = await fetch("./api/prompt/deletePrompt", {
+      method: "DELETE",
+      body: JSON.stringify({
+        id: ID,
+      }),
+    });
+    const res1 = await fetch("./api/prompt/allPrompts", {
+      method: "GET",
+    });
+    const data = await res1.json();
+    console.log(data);
+    setFeed(data);
+    if (res.ok) {
+      console.log("send to delete");
+    }
+  };
   useEffect(() => {
     const fetchPrompt = async () => {
       const res = await fetch("./api/prompt/allPrompts", {
@@ -16,9 +33,9 @@ export default function Home() {
       const data = await res.json();
       console.log(data);
       setFeed(data);
+      return data;
     };
     fetchPrompt();
-    // return res
   }, []);
   return (
     <div>
@@ -39,10 +56,7 @@ export default function Home() {
           <span className="grad1"> Share creative prompts</span>
         </p>
       </div>
-      {
-        session?.user&&
-      <Feed data={feed} />
-      }
+      {session?.user && <Feed data={feed} handleDelete={handleDelete} />}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 const Form = ({ type, post, setPost, submitting, handlesubmit }) => {
   return (
     <div className="form">
-      <h1>Create Post</h1>
+      <h1>{type} Post</h1>
       <p>
         <span>{type}</span> and <span>share</span> amazing prompts with the
         world, and let your imagination run wild with any AI-powered platform
