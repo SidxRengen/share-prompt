@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 export async function copyTextToClipboard(text) {
   if ("clipboard" in navigator) {
     return await navigator.clipboard.writeText(text);
@@ -11,8 +12,10 @@ export async function copyTextToClipboard(text) {
     return document.execCommand("copy", true, text);
   }
 }
-const Feed = ({ data, handleDelete }) => {
+const Feed = ({ data, handleDelete, type, search }) => {
+  const { data: session } = useSession();
   const [isCopied, setIsCopied] = useState(false);
+  var o = 0.1;
   return (
     <div className="feed">
       {data.map((post) => {
@@ -30,42 +33,67 @@ const Feed = ({ data, handleDelete }) => {
               console.log(err);
             });
         };
+        o += 0.2;
         return (
-          <div key={post._id} className="prompt">
-            <div className="row">
-              <img src={post.creator.image} alt="" />
-              <h2>{post.creator.email}</h2>
-              {isCopied ? (
-                <i
-                  class="fa-solid fa-copy"
-                  onClick={() => {
-                    handleCopyClick(post.prompt);
-                  }}
-                ></i>
-              ) : (
-                <i
-                  class="fa-solid fa-copy"
-                  onClick={() => {
-                    handleCopyClick(post.prompt);
-                    setIsCopied(true);
-                  }}
-                ></i>
-              )}
-            </div>
-            <h1>{post.tag}</h1>
-            <p>{post.prompt}</p>
-            <div className="options">
-              <Link href={`/${post._id}`} >
-                <i class="fa-solid fa-pen-to-square" />
-              </Link>
-              <i
-                class="fa-solid fa-trash"
-                onClick={() => {
-                  handleDelete(post._id);
-                }}
-              />
-            </div>
-          </div>
+          <>
+              <motion.div
+                key={post._id}
+                className="prompt"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ ease: "easeIn", type: "spring", delay: o }}
+              >
+                <div>
+                  <div className="row">
+                    <img src={post.creator.image} alt="" />
+                    <div className="row-row1">
+                    <h1>{post.creator.username}</h1>
+                    <h2>{post.creator.email}</h2>
+                    </div>
+                    {isCopied ? (
+                      <i
+                        class="fa-solid fa-copy"
+                        onClick={() => {
+                          handleCopyClick(post.prompt);
+                        }}
+                      ></i>
+                    ) : (
+                      <motion.i
+                        class="fa-solid fa-copy"
+                        onClick={() => {
+                          handleCopyClick(post.prompt);
+                          setIsCopied(true);
+                        }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      />
+                    )}
+                  </div>
+                  <h1>{post.tag}</h1>
+                  <p>{post.prompt}</p>
+                </div>
+                {type != "profile" && (
+                  <div className="options">
+                    <Link href={`/${post._id}`}>
+                      <motion.i
+                        class="fa-solid fa-pen-to-square"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      />
+                    </Link>
+                    <motion.i
+                      class="fa-solid fa-trash"
+                      onClick={() => {
+                        handleDelete(post._id);
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    />
+                  </div>
+                )}
+              </motion.div>
+          </>
         );
       })}
     </div>
