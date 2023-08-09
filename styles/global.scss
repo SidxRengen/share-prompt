@@ -345,11 +345,16 @@
     border: 1px solid rgba(189, 171, 171, 0.3);
     padding: 0.7%;
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: space-between;
     h1 {
       margin: 1px;
       font-family: "Roboto", sans-serif;
+    }
+    .tag1:hover {
+      color: #0c48db;
+      cursor: pointer;
     }
     p {
       margin: 1px;
@@ -463,12 +468,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2vh;
-  /* From https://css.glass */
+  margin-bottom: 3vh;  
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8.3px);
+  box-shadow: 0 4px 30px rgb(73 0 249 / 72%);  backdrop-filter: blur(8.3px);
   width: 400px;
   -webkit-backdrop-filter: blur(8.3px);
   border: 1px solid rgba(235, 235, 243, 0.3);
@@ -622,9 +625,9 @@
     margin: 0;
     font-size: 1.2rem;
   }
-  h2{
+  h2 {
     font-weight: 300;
     margin: 0;
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }

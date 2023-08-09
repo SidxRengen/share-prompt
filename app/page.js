@@ -24,7 +24,6 @@ export default function Home() {
       }),
     });
     const data = await res1.json();
-    console.log(data);
     setFeed(data);
     if (res.ok) {
       console.log("send to delete");
@@ -38,7 +37,6 @@ export default function Home() {
           method: "GET",
         });
         const data = await res.json();
-        console.log(data);
         setFeed(data);
         return data;
       };
@@ -52,7 +50,6 @@ export default function Home() {
           }),
         });
         const data = await res.json();
-        console.log(data);
         setFeed(data);
         return data;
       };
@@ -105,13 +102,14 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ ease: "easeIn", type: "spring", delay: 0.4 }}
       >
-        <form action="" class="search-bar">
+        <form class="search-bar">
           <input
             type="search"
             name="search"
             pattern=".*\S.*"
             required
             value={search}
+            placeholder="Search Prompts..."
             onChange={(e) => {
               setsearch(e.target.value);
             }}
@@ -126,7 +124,7 @@ export default function Home() {
           data={feed}
           handleDelete={handleDelete}
           type="profile"
-          search={search}
+          setsearch={setsearch}
         />
       )}
     </div>

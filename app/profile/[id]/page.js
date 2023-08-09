@@ -1,27 +1,29 @@
 "use client";
-"use client";
+
 import Feed from "@components/Feed";
 // import axios from "axios";
 import "@styles/global.scss";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function page() {
+  const params = useParams();
   const { data: session } = useSession();
   const [search, setsearch] = useState("");
   const [feed, setFeed] = useState([]);
   const handleDelete = async (ID) => {
-    const res = await fetch("./api/prompt/deletePrompt", {
+    const res = await fetch("../api/prompt/deletePrompt", {
       method: "DELETE",
       body: JSON.stringify({
         id: ID,
       }),
     });
-    const res1 = await fetch(`./api/prompt/Prompts`, {
+    const res1 = await fetch(`../api/prompt/Prompts`, {
       method: "POST",
       body: JSON.stringify({
-        search: session?.user.id,
+        search: params.id,
       }),
     });
     const data = await res1.json();
@@ -34,25 +36,24 @@ function page() {
     if (search.length === 0) {
       setFeed([]);
       const fetchPrompt = async () => {
-        const res = await fetch(`./api/prompt/Prompts`, {
+        const res = await fetch(`../api/prompt/Prompts`, {
           method: "POST",
           body: JSON.stringify({
-            search: session?.user.id,
+            search: params.id,
           }),
         });
         const data = await res.json();
-
         setFeed(data);
         return data;
       };
       fetchPrompt();
     } else {
       const fetchPrompt = async () => {
-        const res = await fetch(`./api/prompt/searchPrompt`, {
+        const res = await fetch(`../api/prompt/searchPrompt`, {
           method: "PUT",
           body: JSON.stringify({
             search: search,
-            id: session?.user.id,
+            id: params.id,
           }),
         });
         const data = await res.json();
@@ -78,8 +79,8 @@ function page() {
             name="search"
             pattern=".*\S.*"
             required
-            placeholder="Search Prompts..."
             value={search}
+            placeholder="Search Prompts..."
             onChange={(e) => {
               setsearch(e.target.value);
             }}
