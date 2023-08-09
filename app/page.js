@@ -95,6 +95,7 @@ export default function Home() {
           <span className="grad3"> Share creative prompts</span>
         </motion.p>
       </div>
+      {session?.user && (
       <motion.div
         className="Search"
         initial={{ opacity: 0 }}
@@ -119,6 +120,7 @@ export default function Home() {
           </button>
         </form>
       </motion.div>
+      )}
       {session?.user && (
         <Feed
           data={feed}
