@@ -78,7 +78,7 @@ const Feed = ({ data, handleDelete, type, setsearch }) => {
                   ) : (
                     <motion.i
                       class="fa-solid fa-copy"
-                      style={{ margin: "auto" }}
+                      style={{ margin: "10px" }}
                       onClick={() => {
                         handleCopyClick(post.prompt);
                         setIsCopied(true);
