@@ -37,6 +37,7 @@ export default function Home() {
           method: "GET",
         });
         const data = await res.json();
+        console.log(data);
         setFeed(data);
         return data;
       };
