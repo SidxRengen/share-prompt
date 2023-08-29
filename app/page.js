@@ -93,7 +93,7 @@ export default function Home() {
           <span className="grad3">Prompto</span> is an open source AI prompting
           tool for modern world to
           <span className="grad3"> Discover, Create, Save</span> and
-          <span className="grad3"> Share creative prompts</span>
+          <span className="grad3"> Share creative prompts </span>
         </motion.p>
       </div>
       {session?.user && (
