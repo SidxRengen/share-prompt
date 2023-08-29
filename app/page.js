@@ -76,7 +76,7 @@ export default function Home() {
           <br />
           <motion.span
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="grad3 flex justify-center"
           >
