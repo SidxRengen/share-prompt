@@ -588,6 +588,7 @@
     background: #2762f3;
     border-radius: 0 0.375em 0.375em 0;
     transform: scale(1);
+    display: none !important;
   }
   .search-bar input:focus + .search-btn:before,
   .search-bar input:focus + .search-btn:after,

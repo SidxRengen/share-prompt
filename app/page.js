@@ -88,7 +88,7 @@ export default function Home() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{delay: 0.4 }}
         >
           <span className="grad3">Prompto</span> is an open source AI prompting
           tool for modern world to
