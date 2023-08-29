@@ -8,7 +8,10 @@ export const POST = async (request) => {
     await connectToDB();
     const prompts = (await Prompt.find({}).populate("creator")).filter(
       (prompt) => {
-        return prompt.tag === Prompt.tag || Prompt.prompt === prompt.prompt;
+        return (
+          prompt.tag.slice(0, search.length) === search ||
+          prompt.prompt.slice(0, search.length) === search
+        );
       }
     );
     return new Response(JSON.stringify(prompts), { status: 200 });
