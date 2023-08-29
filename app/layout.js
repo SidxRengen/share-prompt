@@ -14,6 +14,7 @@ const RootLayout = ({ children }) => (
         src="https://kit.fontawesome.com/4a055b32b8.js"
         crossorigin="anonymous"
       ></script>
+       <link rel="icon" type="image/x-icon" href=".././public/assets/images/favicon.ico"></link>
     </head>
     <body>
       <Provider>
