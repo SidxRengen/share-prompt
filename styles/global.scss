@@ -18,6 +18,7 @@
   -webkit-backdrop-filter: blur(4px);
   position: fixed;
   width: -webkit-fill-available;
+  z-index: 1;
 }
 .logo {
   display: flex;
@@ -201,6 +202,7 @@
   }
   .logo-text {
     font-size: 1.4rem;
+    margin: 10px 0;
   }
   .profile-img {
     height: 30px;
@@ -460,6 +462,9 @@
       width: 95%;
       text-align: justify;
     }
+  }
+  .prompt{
+    min-width: 80vw;
   }
 }
 
