@@ -66,6 +66,7 @@ function page() {
   return (
     <div>
       <motion.div
+        style={{ marginTop: "4vh" }}
         className="Search"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
