@@ -49,6 +49,7 @@ function page() {
       fetchPrompt();
     } else {
       const fetchPrompt = async () => {
+        setFeed([]);
         const res = await fetch(`../api/prompt/searchours`, {
           method: "POST",
           body: JSON.stringify({

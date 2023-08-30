@@ -44,6 +44,7 @@ export default function Home() {
       fetchPrompt();
     } else {
       const fetchPrompt = async () => {
+        setFeed([]);
         const res = await fetch(`./api/prompt/searchPrompt`, {
           method: "POST",
           body: JSON.stringify({

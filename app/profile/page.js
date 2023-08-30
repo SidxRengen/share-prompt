@@ -31,7 +31,7 @@ function page() {
     }
   };
   useEffect(() => {
-    if (search.length === 0|| search === "") {
+    if (search.length === 0 || search === "") {
       setFeed([]);
       const fetchPrompt = async () => {
         const res = await fetch(`./api/prompt/Prompts`, {
@@ -48,6 +48,7 @@ function page() {
       fetchPrompt();
     } else {
       const fetchPrompt = async () => {
+        setFeed([]);
         const res = await fetch(`./api/prompt/searchours`, {
           method: "POST",
           body: JSON.stringify({
