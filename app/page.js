@@ -30,7 +30,7 @@ export default function Home() {
     }
   };
   useEffect(() => {
-    if (search.length === 0) {
+    if (search.length === 0 || search === "") {
       setFeed([]);
       const fetchPrompt = async () => {
         const res = await fetch(`./api/prompt/allPrompts`, {
