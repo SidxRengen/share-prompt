@@ -31,7 +31,7 @@ export default function Home() {
   };
   useEffect(() => {
     if (search.length === 0) {
-      setFeed([])
+      setFeed([]);
       const fetchPrompt = async () => {
         const res = await fetch(`./api/prompt/allPrompts`, {
           method: "GET",
@@ -76,7 +76,7 @@ export default function Home() {
           <br />
           <motion.span
             initial={{ opacity: 0 }}
-            animate={{opacity: 1 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="grad3 flex justify-center"
           >
@@ -88,7 +88,7 @@ export default function Home() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{delay: 0.4 }}
+          transition={{ delay: 0.4 }}
         >
           <span className="grad3">Prompto</span> is an open source AI prompting
           tool for modern world to
@@ -97,30 +97,30 @@ export default function Home() {
         </motion.p>
       </div>
       {session?.user && (
-      <motion.div
-        className="Search"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ ease: "easeIn", type: "spring", delay: 0.4 }}
-      >
-        <form class="search-bar">
-          <input
-            type="search"
-            name="search"
-            pattern=".*\S.*"
-            required
-            value={search}
-            placeholder="Search Prompts..."
-            onChange={(e) => {
-              setsearch(e.target.value);
-            }}
-          />
-          <button class="search-btn" type="button">
-            <span>Search</span>
-          </button>
-        </form>
-      </motion.div>
+        <motion.div
+          className="Search"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ ease: "easeIn", type: "spring", delay: 0.4 }}
+        >
+          <form class="search-bar">
+            <input
+              type="search"
+              name="search"
+              pattern=".*\S.*"
+              required
+              value={search}
+              placeholder="Search Prompts..."
+              onChange={(e) => {
+                setsearch(e.target.value);
+              }}
+            />
+            <button class="search-btn" type="button">
+              <span>Search</span>
+            </button>
+          </form>
+        </motion.div>
       )}
       {session?.user && (
         <Feed

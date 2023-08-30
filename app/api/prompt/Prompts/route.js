@@ -6,7 +6,7 @@ export const POST = async (request) => {
   console.log(search);
   try {
     await connectToDB();
-    const prompts = (await Prompt.find({creator:search}).populate("creator"))
+    const prompts = await Prompt.find({ creator: search }).populate("creator");
     return new Response(JSON.stringify(prompts), { status: 200 });
   } catch (error) {
     return new Response("Failed to fetch any prompts", { status: 500 });
