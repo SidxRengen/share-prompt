@@ -58,6 +58,7 @@ function page() {
         });
         const data = await res.json();
         setFeed(data);
+        console.log(data);
         return data;
       };
       fetchPrompt();
