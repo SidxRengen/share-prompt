@@ -67,7 +67,7 @@ function page() {
   }, [search]);
 
   return (
-    <div>
+    <div style={{paddingTop:"4vh"}}>
       {/* <motion.div
         style={{ marginTop: "4vh" }}
         className="Search"
