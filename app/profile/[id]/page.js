@@ -65,7 +65,7 @@ function page() {
   }, [search]);
 
   return (
-    <div>
+    <div style={{ paddingTop: "12vh" }}>
       <motion.div
         className="Search"
         initial={{ opacity: 0 }}
