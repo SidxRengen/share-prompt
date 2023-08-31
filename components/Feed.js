@@ -91,7 +91,7 @@ const Feed = ({ data, handleDelete, type, setsearch , other }) => {
                 <h1
                   className="tag1"
                   onClick={() => {
-                    setsearch(post.tag);
+                    (type != "profile" && other !== "others") && setsearch(post.tag);
                   }}
                 >
                   #{post.tag}
