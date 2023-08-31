@@ -93,7 +93,7 @@ function page() {
           </button>
         </form>
       </motion.div> */}
-      <Feed data={feed} handleDelete={handleDelete} setsearch={setsearch} type="profile"/>
+      <Feed data={feed} handleDelete={handleDelete} setsearch={setsearch} type="profile" other="others"/>
     </div>
   );
 }

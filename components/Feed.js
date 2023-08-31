@@ -13,7 +13,7 @@ export async function copyTextToClipboard(text) {
     return document.execCommand("copy", true, text);
   }
 }
-const Feed = ({ data, handleDelete, type, setsearch }) => {
+const Feed = ({ data, handleDelete, type, setsearch , other }) => {
   const { data: session } = useSession();
   const [isCopied, setIsCopied] = useState(false);
   const [style, setstyle] = useState();
@@ -53,17 +53,14 @@ const Feed = ({ data, handleDelete, type, setsearch }) => {
                     src={post.creator.image}
                     alt=""
                     style={
-                      session?.user.id !== post.creator._id
-                        ? {
-                            cursor: "pointer",
-                          }
-                        : {}
+                      session?.user.id !== post.creator._id ? {
+                        cursor: "pointer"
+                      }:{}
                     }
                     onClick={(e) => {
                       e.preventDefault();
-                      session?.user.id !== post.creator._id ||
-                        (type === "profile" &&
-                          router.push(`profile/${post.creator._id}`));
+                      (session?.user.id !== post.creator._id && other !== "others") &&
+                        router.push(`profile/${post.creator._id}`);
                     }}
                   />
 
