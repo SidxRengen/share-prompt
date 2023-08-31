@@ -53,14 +53,17 @@ const Feed = ({ data, handleDelete, type, setsearch }) => {
                     src={post.creator.image}
                     alt=""
                     style={
-                      session?.user.id !== post.creator._id ? {
-                        cursor: "pointer"
-                      }:{}
+                      session?.user.id !== post.creator._id
+                        ? {
+                            cursor: "pointer",
+                          }
+                        : {}
                     }
                     onClick={(e) => {
                       e.preventDefault();
-                      session?.user.id !== post.creator._id &&
-                        router.push(`profile/${post.creator._id}`);
+                      session?.user.id !== post.creator._id ||
+                        (type === "profile" &&
+                          router.push(`profile/${post.creator._id}`));
                     }}
                   />
 
