@@ -53,7 +53,7 @@ const Feed = ({ data, handleDelete, type, setsearch , other }) => {
                     src={post.creator.image}
                     alt=""
                     style={
-                      session?.user.id !== post.creator._id ? {
+                      (session?.user.id !== post.creator._id && other !== "others") ? {
                         cursor: "pointer"
                       }:{}
                     }
