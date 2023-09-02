@@ -1,6 +1,7 @@
 "use client";
 "use client";
 import Feed from "@components/Feed";
+import Nav from "@components/Nav";
 // import axios from "axios";
 import "@styles/global.scss";
 import { motion } from "framer-motion";
@@ -31,70 +32,45 @@ function page() {
     }
   };
   useEffect(() => {
-    if (search.length === 0 || search === "") {
-      setFeed([]);
-      const fetchPrompt = async () => {
-        const res = await fetch(`./api/prompt/Prompts`, {
-          method: "POST",
-          body: JSON.stringify({
-            search: session?.user.id,
-          }),
-        });
-        const data = await res.json();
+    const fetchPrompt = async () => {
+      const res = await fetch(`./api/prompt/Prompts`, {
+        method: "POST",
+        body: JSON.stringify({
+          search: session?.user.id,
+        }),
+      });
+      const data = await res.json();
 
-        setFeed(data);
-        return data;
-      };
-      fetchPrompt();
-    } else {
-      const fetchPrompt = async () => {
-        setFeed([]);
-        const res = await fetch(`./api/prompt/searchours`, {
-          method: "POST",
-          body: JSON.stringify({
-            search: search,
-            id: session?.user.id,
-          }),
-        });
-        const data = await res.json();
-        setFeed(data);
-        console.log(data);
-        return data;
-      };
-      fetchPrompt();
-    }
-  }, [search]);
-
+      setFeed(data);
+      return data;
+    };
+    fetchPrompt();
+  }, []);
+  // const [mode, setmode] = useState(true);
+  // const style2 = { background: "#040D12", marginTop: "8vh", minHeight: "92vh" };
+  // const style1 = {
+  //   background: "transparent",
+  //   minHeight: "92vh",
+  //   marginTop: "8vh",
+  // };
   return (
-    <div style={{paddingTop:"4vh"}}>
-      {/* <motion.div
-        style={{ marginTop: "4vh" }}
-        className="Search"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ ease: "easeIn", type: "spring", delay: 0.4 }}
-      >
-        <form action="" class="search-bar">
-          <input
-            type="search"
-            name="search"
-            pattern=".*\S.*"
-            required
-            placeholder="Search Prompts..."
-            value={search}
-            onChange={(e) => {
-              setsearch(e.target.value);
-            }}
+    <>
+      {/* <Nav setmode={setmode} /> */}
+      {feed.length !== 0 && (
+        <div
+          style={{ paddingTop: "9vh" }}
+          // style={mode ? style1 : style2}
+        >
+          <Feed
+            data={feed}
+            handleDelete={handleDelete}
+            setsearch={setsearch}
+            // mode={mode}
+            other="me"
           />
-          <button class="search-btn" type="button">
-            <span>Search</span>
-          </button>
-        </form>
-      </motion.div> */}
-      <Feed data={feed} handleDelete={handleDelete} setsearch={setsearch} other="me"
-      />
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

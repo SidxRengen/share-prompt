@@ -14,13 +14,13 @@ function page() {
   const [search, setsearch] = useState("");
   const [feed, setFeed] = useState([]);
   const handleDelete = async (ID) => {
-    const res = await fetch("../api/prompt/deletePrompt", {
+    const res = await fetch("./api/prompt/deletePrompt", {
       method: "DELETE",
       body: JSON.stringify({
         id: ID,
       }),
     });
-    const res1 = await fetch(`../api/prompt/Prompts`, {
+    const res1 = await fetch(`./api/prompt/Prompts`, {
       method: "POST",
       body: JSON.stringify({
         search: params.id,
@@ -33,41 +33,22 @@ function page() {
     }
   };
   useEffect(() => {
-    if (search.length === 0|| search === "") {
-      setFeed([]);
-      const fetchPrompt = async () => {
-        const res = await fetch(`../api/prompt/Prompts`, {
-          method: "POST",
-          body: JSON.stringify({
-            search: params.id,
-          }),
-        });
-        const data = await res.json();
-        setFeed(data);
-        return data;
-      };
-      fetchPrompt();
-    } else {
-      const fetchPrompt = async () => {
-        setFeed([]);
-        const res = await fetch(`../api/prompt/searchours`, {
-          method: "POST",
-          body: JSON.stringify({
-            search: search,
-            id: params.id,
-          }),
-        });
-        const data = await res.json();
-        setFeed(data);
-        console.log(data);
-        return data;
-      };
-      fetchPrompt();
-    }
-  }, [search]);
+    const fetchPrompt = async () => {
+      const res = await fetch(`./api/prompt/Prompts`, {
+        method: "POST",
+        body: JSON.stringify({
+          search: params.id,
+        }),
+      });
+      const data = await res.json();
+      setFeed(data);
+      return data;
+    };
+    fetchPrompt();
+  }, []);
 
   return (
-    <div style={{paddingTop:"4vh"}}>
+    <div style={{ paddingTop: "9vh" }}>
       {/* <motion.div
         style={{ marginTop: "4vh" }}
         className="Search"
@@ -93,7 +74,15 @@ function page() {
           </button>
         </form>
       </motion.div> */}
-      <Feed data={feed} handleDelete={handleDelete} setsearch={setsearch} type="profile" other="others"/>
+      {feed.length !== 0 && (
+        <Feed
+          data={feed}
+          handleDelete={handleDelete}
+          setsearch={setsearch}
+          type="profile"
+          other="others"
+        />
+      )}
     </div>
   );
 }

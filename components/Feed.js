@@ -13,7 +13,7 @@ export async function copyTextToClipboard(text) {
     return document.execCommand("copy", true, text);
   }
 }
-const Feed = ({ data, handleDelete, type, setsearch , other }) => {
+const Feed = ({ data, handleDelete, type, setsearch, other, mode }) => {
   const { data: session } = useSession();
   const [isCopied, setIsCopied] = useState(false);
   const [style, setstyle] = useState();
@@ -48,25 +48,39 @@ const Feed = ({ data, handleDelete, type, setsearch , other }) => {
               transition={{ ease: "easeIn", type: "spring", delay: o }}
             >
               <div>
-                <div className="row">
-                  <img
-                    src={post.creator.image}
-                    alt=""
-                    style={
-                      (session?.user.id !== post.creator._id && other !== "others") ? {
-                        cursor: "pointer"
-                      }:{}
-                    }
-                    onClick={(e) => {
-                      e.preventDefault();
-                      (session?.user.id !== post.creator._id && other !== "others") &&
-                        router.push(`profile/${post.creator._id}`);
-                    }}
-                  />
+                <div className="row-row2">
+                  <div className="row">
+                    <img
+                      src={post?.creator.image}
+                      alt=""
+                      style={
+                        session?.user.id !== post.creator._id &&
+                        other !== "others"
+                          ? {
+                              cursor: "pointer",
+                            }
+                          : {}
+                      }
+                      onClick={(e) => {
+                        e.preventDefault();
+                        session?.user.id !== post.creator._id &&
+                          other !== "others" &&
+                          router.push(`profile/${post.creator._id}`);
+                      }}
+                    />
 
-                  <div className="row-row1">
-                    <h1>{post.creator.username}</h1>
-                    <h2>{post.creator.email}</h2>
+                    <div className="row-row1">
+                      <h1
+                        // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
+                      >
+                        {post.creator.username}
+                      </h1>
+                      <h2
+                        // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
+                      >
+                        {post.creator.email}
+                      </h2>
+                    </div>
                   </div>
                   {isCopied ? (
                     <i
@@ -91,12 +105,15 @@ const Feed = ({ data, handleDelete, type, setsearch , other }) => {
                 <h1
                   className="tag1"
                   onClick={() => {
-                    (other !== "me" && other !== "others") && setsearch(post.tag);
+                    other !== "me" && other !== "others" && setsearch(post.tag);
                   }}
+                  // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
                 >
                   #{post.tag}
                 </h1>
-                <p>{post.prompt}</p>
+                <p 
+                // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
+                >{post.prompt}</p>
               </div>
               {type != "profile" && (
                 <div className="options">
@@ -112,6 +129,7 @@ const Feed = ({ data, handleDelete, type, setsearch , other }) => {
                     onClick={() => {
                       handleDelete(post._id);
                     }}
+
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   />

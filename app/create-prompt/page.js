@@ -1,9 +1,10 @@
 "use client";
 
 import Form from "@components/Form";
+import Nav from "@components/Nav";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 function CraetePrompt() {
   const router = useRouter();
   const { data: session } = useSession();
@@ -33,16 +34,44 @@ function CraetePrompt() {
       setsubmitting(false);
     }
   };
+  // const [user, setuser] = useState({});
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const res = await fetch("./api/mode", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         id: session?.user.id,
+  //       }),
+  //     });
+  //     const data = await res.json();
+  //     console.log(data?.mode);
+  //     setuser(data);
+  //   };
+  //   getUser();
+  // }, []);
+
+  // const [mode, setmode] = useState(false);
+  // const style2 = { background: "#040D12", marginTop: "8vh", minHeight: "92vh" };
+  // const style1 = {
+  //   background: "white",
+  //   minHeight: "92vh",
+  // };
   return (
-    <div>
-      <Form
-        type="Create"
-        post={Post}
-        setPost={setPost}
-        submitting={submitting}
-        handlesubmit={createPrompt}
-      />
-    </div>
+    <>
+      {/* <Nav setmode={setmode} /> */}
+      <div 
+      // style={mode ? style1 : style2}
+      >
+        <Form
+          type="Create"
+          // mode={mode}
+          post={Post}
+          setPost={setPost}
+          submitting={submitting}
+          handlesubmit={createPrompt}
+        />
+      </div>
+    </>
   );
 }
 

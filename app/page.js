@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fetchData } from "next-auth/client/_utils";
+import Nav from "@components/Nav";
 export default function Home() {
   const [feed, setFeed] = useState([]);
   const { data: session } = useSession();
@@ -58,79 +59,106 @@ export default function Home() {
       fetchPrompt();
     }
   }, [search]);
+  // const [mode, setmode] = useState(z);
+  // const style2 = { background: "#040D12", marginTop: "8vh", minHeight: "92vh" };
+  // const style1 = {
+  //   background: "transparent",
+  //   marginTop: "8vh",
+  //   minHeight: "92vh",
+  // };
   return (
-    <div>
-      <div className="title flex flex-row flex-wrap justify-center mt-2">
-        <h1>
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            Discover and Share{" "}
-          </motion.span>
-          <br />
-          <motion.span
+    <>
+      {/* <Nav setmode={setmode} /> */}
+      <div
+        //  style={mode ? style1 : style2}
+        className="mob-body"
+      >
+        <div className="title flex flex-row flex-wrap justify-center mt-2">
+          <h1>
+            <motion.span
+              // style={  { color: "black" } : { color: "white" }}
+              className="body-title"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+            </motion.span>
+            <br />
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="grad3 flex justify-center"
+            >
+              AI-Powered{" "}
+            </motion.span>
+            <br />
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="grad3 flex justify-center"
+            >
+              Prompts
+            </motion.span>
+          </h1>
+        </div>
+        <div className="discription flex flex-row justify-center mt-3">
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="grad3 flex justify-center"
+            transition={{ delay: 0.4 }}
           >
-            AI-Powered{" "}
-          </motion.span>
-          <br />
-          <motion.span
+            <span className="grad3">Prompto </span>
+            <span
+            //  style={mode ? { color: "black" } : { color: "white" }}
+            >
+              is an open source AI prompting tool for modern world to
+            </span>
+            <span className="grad3"> Discover, Create, Save </span>
+            <span
+            // style={mode ? { color: "black" } : { color: "white" }}
+            >
+              and
+            </span>
+            <span className="grad3"> Share creative prompts </span>
+          </motion.p>
+        </div>
+        {session?.user && (
+          <motion.div
+            className="Search"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="grad3 flex justify-center"
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ ease: "easeIn", type: "spring", delay: 0.4 }}
           >
-            Prompts
-          </motion.span>
-        </h1>
+            <form class="search-bar">
+              <input
+                type="search"
+                name="search"
+                pattern=".*\S.*"
+                required
+                value={search}
+                placeholder="Search Prompts..."
+                onChange={(e) => {
+                  setsearch(e.target.value);
+                }}
+              />
+              <button class="search-btn" type="button">
+                <span>Search</span>
+              </button>
+            </form>
+          </motion.div>
+        )}
+        {session?.user && feed.length !== 0 && (
+          <Feed
+            // mode={mode}
+            data={feed}
+            handleDelete={handleDelete}
+            type="profile"
+            setsearch={setsearch}
+          />
+        )}
       </div>
-      <div className="discription flex flex-row justify-center mt-3">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <span className="grad3">Prompto</span> is an open source AI prompting
-          tool for modern world to
-          <span className="grad3"> Discover, Create, Save</span> and
-          <span className="grad3"> Share creative prompts </span>
-        </motion.p>
-      </div>
-      {session?.user && (
-        <motion.div
-          className="Search"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ ease: "easeIn", type: "spring", delay: 0.4 }}
-        >
-          <form class="search-bar">
-            <input
-              type="search"
-              name="search"
-              pattern=".*\S.*"
-              required
-              value={search}
-              placeholder="Search Prompts..."
-              onChange={(e) => {
-                setsearch(e.target.value);
-              }}
-            />
-            <button class="search-btn" type="button">
-              <span>Search</span>
-            </button>
-          </form>
-        </motion.div>
-      )}
-      {session?.user && (
-        <Feed
-          data={feed}
-          handleDelete={handleDelete}
-          type="profile"
-          setsearch={setsearch}
-        />
-      )}
-    </div>
+    </>
   );
 }
