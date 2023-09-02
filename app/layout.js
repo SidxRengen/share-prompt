@@ -1,10 +1,9 @@
-"use client";
+
 
 import "@styles/global.scss";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
-import { useEffect } from "react";
-import { ThemeProvider } from "next-themes";
+
 export const metadata = {
   title: "Prompto",
   description: "Descover & Share Amazing Prompts",
@@ -19,23 +18,21 @@ const RootLayout = ({ children }) => (
       <link
         rel="icon"
         type="image/x-icon"
-        href="@public/assets/images/favicon.ico"
-      />
+        href=".././public/assets/images/favicon.ico"
+      ></link>
     </head>
     <body>
-      <ThemeProvider>
-        <Provider>
-          <div className="main">
-            <div className="gradient" />
+      <Provider>
+        <div className="main">
+          <div className="gradient" />
+        </div>
+        <main className="app">
+          <Nav />
+          <div style={{ paddingTop: "4vh", overflowX: "hidden" }}>
+            {children}
           </div>
-          <main className="app">
-            <Nav />
-            <div style={{ paddingTop: "4vh", overflowX: "hidden" }}>
-              {children}
-            </div>
-          </main>
-        </Provider>
-      </ThemeProvider>
+        </main>
+      </Provider>
     </body>
   </html>
 );
