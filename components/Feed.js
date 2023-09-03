@@ -71,12 +71,12 @@ const Feed = ({ data, handleDelete, type, setsearch, other, mode }) => {
 
                     <div className="row-row1">
                       <h1
-                        // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
+                      // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
                       >
                         {post.creator.username}
                       </h1>
                       <h2
-                        // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
+                      // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
                       >
                         {post.creator.email}
                       </h2>
@@ -85,6 +85,7 @@ const Feed = ({ data, handleDelete, type, setsearch, other, mode }) => {
                   {isCopied ? (
                     <i
                       class="fa-solid fa-copy"
+                      style={{ cursor: "pointer" }}
                       onClick={() => {
                         handleCopyClick(post.prompt);
                       }}
@@ -92,7 +93,7 @@ const Feed = ({ data, handleDelete, type, setsearch, other, mode }) => {
                   ) : (
                     <motion.i
                       class="fa-solid fa-copy"
-                      style={{ margin: "10px" }}
+                      style={{ margin: "10px", cursor: "pointer" }}
                       onClick={() => {
                         handleCopyClick(post.prompt);
                         setIsCopied(true);
@@ -111,9 +112,11 @@ const Feed = ({ data, handleDelete, type, setsearch, other, mode }) => {
                 >
                   #{post.tag}
                 </h1>
-                <p 
+                <p
                 // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
-                >{post.prompt}</p>
+                >
+                  {post.prompt}
+                </p>
               </div>
               {type != "profile" && (
                 <div className="options">
@@ -129,7 +132,6 @@ const Feed = ({ data, handleDelete, type, setsearch, other, mode }) => {
                     onClick={() => {
                       handleDelete(post._id);
                     }}
-
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   />
