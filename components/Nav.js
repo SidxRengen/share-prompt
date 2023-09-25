@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import axios from "axios";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 const Nav = ({ setmode }) => {
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-
+  
   useEffect(() => {
     (async () => {
       const res = await getProviders();
@@ -24,6 +25,7 @@ const Nav = ({ setmode }) => {
   const [mode1, setmode1] = useState();
   const [mode2, setmode2] = useState(true);
   const { theme, setTheme } = useTheme();
+  const router =  useRouter()
   const handleToggle = async (e) => {
     setmode1(e.target.checked);
     mode1 ? setTheme("light") : setTheme("dark");
@@ -154,6 +156,7 @@ const Nav = ({ setmode }) => {
                   type="button"
                   onClick={() => {
                     setToggleDropdown(false);
+                    router.push('/')
                     signOut();
                   }}
                   className="button3"
