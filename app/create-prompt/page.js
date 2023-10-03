@@ -34,34 +34,9 @@ function CraetePrompt() {
       setsubmitting(false);
     }
   };
-  // const [user, setuser] = useState({});
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     const res = await fetch("./api/mode", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         id: session?.user.id,
-  //       }),
-  //     });
-  //     const data = await res.json();
-  //     console.log(data?.mode);
-  //     setuser(data);
-  //   };
-  //   getUser();
-  // }, []);
-
-  // const [mode, setmode] = useState(false);
-  // const style2 = { background: "#040D12", marginTop: "8vh", minHeight: "92vh" };
-  // const style1 = {
-  //   background: "white",
-  //   minHeight: "92vh",
-  // };
   return (
     <>
-      {/* <Nav setmode={setmode} /> */}
-      <div 
-      // style={mode ? style1 : style2}
-      >
+      <div>
         <Form
           type="Create"
           // mode={mode}

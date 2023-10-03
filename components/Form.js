@@ -6,7 +6,6 @@ const Form = ({ type, post, setPost, submitting, handlesubmit, mode }) => {
   return (
     <motion.div className="form">
       <motion.h1
-
         // style={mode ? { color: "black" } : { color: "white" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -20,11 +19,13 @@ const Form = ({ type, post, setPost, submitting, handlesubmit, mode }) => {
         transition={{ delay: 0.2 }}
       >
         <span className="grad3">{type}</span>{" "}
-        <span 
+        <span
         // style={mode ? { color: "black" } : { color: "white" }}
-        >and </span>
+        >
+          and{" "}
+        </span>
         <span className="grad3">share </span>
-        <span 
+        <span
         // style={mode ? { color: "black" } : { color: "white" }}
         >
           prompts with the world, and let your imagination run wild with any
@@ -38,7 +39,7 @@ const Form = ({ type, post, setPost, submitting, handlesubmit, mode }) => {
         transition={{ delay: 0.3 }}
       >
         <form onSubmit={handlesubmit}>
-          <h3 
+          <h3
           // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
           >
             Your AI Prompt
@@ -54,14 +55,13 @@ const Form = ({ type, post, setPost, submitting, handlesubmit, mode }) => {
             name="prompt"
             id=""
           ></textarea>
-          <h3 
+          <h3
           // style={mode ? { color: "black" } : { color: "#d6d6d6" }}
           >
             Tag(#product #webdevelopment #idea)
           </h3>
           <textarea
             value={post.tag}
-
             // style={mode ? {} : { background: "#373636", color: "#d6d6d6" }}
             onChange={(e) => {
               setPost({ ...post, tag: e.target.value });
